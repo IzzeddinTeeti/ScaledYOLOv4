@@ -1,0 +1,8 @@
+*.png
+*.txt
+*.pyc
+*.jpg
+*.json
+events*
+*.cache
+*.pt

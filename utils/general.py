@@ -1083,9 +1083,10 @@ def fitness(x):
 
 def output_to_target(output, width, height):
     # Convert model output to target format [batch_id, class_id, x, y, w, h, conf]
+    
     if isinstance(output, torch.Tensor):
         output = output.cpu().numpy()
-
+    # output = output.numpy()
     targets = []
     for i, o in enumerate(output):
         if o is not None:
@@ -1097,10 +1098,23 @@ def output_to_target(output, width, height):
                 y = box[1] / height + h / 2
                 conf = pred[4]
                 cls = int(pred[5])
-
+                if isinstance(i, torch.Tensor):
+                    i = i.cpu().numpy()
+                if isinstance(cls, torch.Tensor):
+                    cls = cls.cpu().numpy()
+                if isinstance(x, torch.Tensor):
+                    x = x.cpu().numpy()
+                if isinstance(y, torch.Tensor):
+                    y = y.cpu().numpy()
+                if isinstance(w, torch.Tensor):
+                    w = w.cpu().numpy()
+                if isinstance(h, torch.Tensor):
+                    h = h.cpu().numpy()
+                if isinstance(conf, torch.Tensor):
+                    conf = conf.cpu().numpy()
                 targets.append([i, cls, x, y, w, h, conf])
-
-    return np.array(targets)
+    rett = np.array(targets)
+    return rett
 
 
 def increment_dir(dir, comment=''):

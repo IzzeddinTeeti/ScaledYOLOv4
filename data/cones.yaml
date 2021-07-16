@@ -1,6 +1,6 @@
 # train and val datasets (image directory or *.txt file with image paths)
-train: ../cones_dataset/good/train/images/ # 128 images  # modified
-val: ../cones_dataset/good/val/images/  # 128 images  # modified
+train: cones_dataset/good/images/train.txt # 128 images  # modified
+val: cones_dataset/good/images/val.txt  # 128 images  # modified
 # test: ../coco/testdev2017.txt  # 20k images for submission to https://competitions.codalab.org/competitions/20794
 
 # number of classes
